@@ -1,0 +1,122 @@
+<ui:composition  align="center" template="/WEB-INF/templates/plantilla.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define  name="title">Actividades</ui:define>
+    <ui:define  name="content">
+    
+       <p:growl id="msg" showDetail="true"/>
+     <c:if test="#{acts.getActividades().isEmpty() or acts.getActividades() == null}">
+    
+     	<h:outputText value="No Hay ninguna actividad disponible" class="Con2" />
+    
+    </c:if>
+    
+
+    <c:if test="#{!acts.getActividades().isEmpty() or acts.getActividades() != null}">
+    
+     	<h:form id="form">
+     
+     	 
+     	<p:carousel value="#{acts.getActividades()}" headerText="Actividades" var="actividad" itemStyle="text-align:center; display:flex" responsive="true">
+ 
+			
+		 
+			        <p:panelGrid columns="1" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                      <br/>
+                    
+						    <h:outputText value="Nombre: #{actividad.nombre}" />
+						    
+						    <h:outputText value="Descripción: #{actividad.descripcion}" />
+			
+				 
+				            <h:outputText value="Fecha: #{actividad.fecha}" />
+				         
+				 
+				            <h:outputText value="Localización: #{actividad.localizacion}" />
+				           
+				            
+				            <h:outputText value="Duración: #{actividad.duracion}" />
+				 
+				 
+				            <h:outputText value="Número plazas: #{actividad.plazas}" />
+				            <br/>
+				            
+				            <h:commandButton  class="Boton3" align="center" value="Ver servicios" action="#{acts.setActselec(actividad)}" update="form"/>
+
+			             
+			            </p:panelGrid>
+			            
+			        
+                    
+		</p:carousel>
+		
+              
+                    <c:if test="#{acts.getActselec() != null}">
+                      	<br/>
+						<p:dataScroller value="#{acts.actselec.lista_servicio}" var="servicio" chunkSize="10" >
+						
+							<f:facet name="header" style="align-text:left">
+            					Servicios de la actividad #{acts.actselec.nombre}
+       						</f:facet>
+						
+						
+						        <h:panelGrid columns="2" style="width:300px">
+						        
+						        					<h:outputText style="border-bottom: 1px solid #000000;" />	           
+						            <p:outputPanel>
+						            
+						      
+						            
+						            
+							            <h:panelGrid columns="4" cellpadding="3" class="servitem">
+							            
+							            	<h:outputText value="Descripción: #{servicio.descripcion}" />
+											           
+											<h:outputText value="Horas: #{servicio.horas}" />
+											         
+											<h:outputText value="Número Participantes: #{servicio.numParticipantes}" />
+											
+											<c:if test="#{acts.ctrl.usuario != null}">
+    
+     											<h:commandButton  class="Boton3" align="center" value="Apuntarse" action="#{acts.apuntaUsuario(servicio)}" update="msg"/>
+    
+    										</c:if>
+    										
+    										<c:if test="#{acts.ctrl.usuario == null}">
+    
+     												<h:outputText value="Es necesario estar registrado en la aplicacion para poder apuntarse a un servicio" />
+    
+    										</c:if>
+											
+											
+											<br/>
+											<br/>
+													            
+							            </h:panelGrid>
+						           
+						            </p:outputPanel>
+						            
+						          </h:panelGrid>
+						          
+						</p:dataScroller>      
+                    
+                    </c:if>
+
+    </h:form>
+     	
+
+    
+    </c:if>
+    
+    
+       
+		
+        
+    </ui:define>
+</ui:composition>     
+
+

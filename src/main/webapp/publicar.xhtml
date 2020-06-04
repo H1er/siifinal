@@ -1,0 +1,144 @@
+<ui:composition  align="center" template="/WEB-INF/templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define  name="title">Publicar actividad</ui:define>
+    <ui:define  name="content">
+	
+<p:growl id="msg" showDetail="true"/>
+
+
+    
+   <h:form class="textbox2">
+<h1 class="t1">Publicar Actividad</h1>
+<br/>
+<br/>
+    <br/>
+    <p class="p11">Indique el nombre de su actividad *</p>  
+    <h:panelGrid columns="2" style="margin-top:1%;margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+     <p:inputText value="#{publicaractividad.nombre}" name="name1" id="name1"/>
+     </h:panelGrid>
+
+
+
+   	<br/>
+    <br/>
+    <p class="p11">Indique la fecha de su actividad *</p>  
+    <h:panelGrid columns="2" style="margin-top:1%;margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+     <p:calendar value="#{publicaractividad.fecha}" name="name" id="name"/>
+     <p:graphicImage value="images/calendar.png" height="40" width="40"  />
+     </h:panelGrid>
+
+   
+    
+    <br/>
+    <br/>
+    <p class="p11">Indique la localización de su actividad*</p>
+     <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+    <p:inputText value="#{publicaractividad.localizacion}" placeholder="Localización"/>
+    <p:graphicImage value="images/location.png" height="40" width="40"  />
+    </h:panelGrid>
+    
+    <br/>
+    <br/>
+    <p class="p11">Indique la descripción de su actividad*</p>
+     <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+    <p:inputText value="#{publicaractividad.descripcion}" placeholder="Descripción"/>
+    <p:graphicImage value="images/descripcion.png" height="40" width="40"   />
+    </h:panelGrid>
+    
+    <br/>
+    <br/>
+    <p class="p11">Indique la duración de su actividad*</p>
+     <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+    <p:inputText value="#{publicaractividad.duracion}" placeholder="Duración"/>
+     <p:graphicImage value="images/cronometro.png" height="40" width="40"  />
+     </h:panelGrid>
+   
+   
+     <br/>
+     <br/>
+    <p class="p11">Indique el numero de plazas* </p>
+     <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+    <p:inputText value="#{publicaractividad.num}" placeholder="Plazas"/>
+     <p:graphicImage value="images/plazas.png" height="40" width="40"  />
+     </h:panelGrid>
+     
+     
+
+    
+    <p:commandButton value="Añadir servicio" class="Boton3" action="#{publicaractividad.increment()}" update="output" />
+    <p:commandButton value="Quitar servicio" class="Boton3" action="#{publicaractividad.decrease()}" update="output" />
+ 
+    <p:outputPanel id="output">
+    
+        <div class="p-grid" style="margin-top: .5em">
+        
+            <ui:repeat value="#{publicaractividad.columns}"  var="column" >
+            
+            	<h:panelGrid columns="2" class="servitem">
+							           
+					<h:outputText value="Descripción: " />
+					 <p:inputText value="#{column.descripcion}" placeholder="Describe brevemente el servicio"/>	               
+											           
+					<h:outputText value="Horas: " />
+					<p:inputText value="#{column.horas}" placeholder="Numero de horas"/>	     
+									         
+					<h:outputText value="Número Participantes: " />
+					<p:inputText value="#{column.numParticipantes}" placeholder="Numero de participantes"/>	     
+					
+					
+					
+					<br/>
+					<br/>
+					
+					</h:panelGrid>
+                
+                       
+                    
+            </ui:repeat>
+            
+        </div>
+    </p:outputPanel>
+	
+
+     
+     <h:commandButton value="Añadir actividad" class="Boton2" action="#{publicaractividad.aniade()}" update="msg"/>
+
+      
+      
+      </h:form>
+      
+
+      
+      
+
+    </ui:define>
+</ui:composition>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

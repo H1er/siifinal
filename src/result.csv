@@ -1,0 +1,7 @@
+"DTYPE","codigo","Apellido1","Apellido2","Contrasenia","DNI","Fechanacimiento","Nombre","mail","tipouser","Tipoo","departamento","rango","curso","titulacion","ciudad","direccion","pagina_web","pais","telefono","tipo_origen","admin_codigo"
+"Usuario","5","Lopez","Jimenez","lopez1234","45681267P","1999-08-24","Carlos","lopezcarlos@correo.com","1","NULL","NULL","NULL","NULL","NULL","NULL","NULL","NULL","NULL","NULL","NULL","NULL"
+"Docente","7","el","profe","mates","25689153L","2020-05-12","Sixto","profe@elmejo.com","2","NULL","Calculo idk","NULL","NULL","NULL","NULL","NULL","NULL","NULL","NULL","NULL","NULL"
+"Entidad","8","NULL","NULL","entidad","66666666S","NULL","Organizacion","organizacion@org.com","5","NULL","NULL","NULL","NULL","NULL","Funte de Piedra","c/organizada, 22","www.organizacion.org","Españita","123456789","Con ánimo de lucro","NULL"
+"Estudiante","9","estudiante","apellido","123","32165478E","2020-06-04","Sample","persona@estudiante.com","3","NULL","NULL","NULL","3","G.I. Ingeniosa","NULL","NULL","NULL","NULL","NULL","NULL","NULL"
+"Personal_Administracion","10","Tio","pdipas","123","98168902J","2020-06-05","Un","pdipas@uni.com","4","Secretario","NULL","NULL","NULL","NULL","NULL","NULL","NULL","NULL","NULL","NULL","NULL"
+

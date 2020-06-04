@@ -1,0 +1,188 @@
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">BANDEJA DE MENSAJES</ui:define>>
+    <ui:define name="content">
+                <h:form id="form">
+                    <p:tabView>
+                        <p:tab title="Recibido">
+                        
+                         
+                        
+		                            <p:dataTable class="table1"
+		                                         value="#{bandeja.getRecibidos(controlAutorizacion.usuario.key.codigo)}" 
+		                                         var="Mensaje"
+		                                         selectionMode="single" 
+		                                         selection="#{bandeja.seleccionado}" 
+		                                         rowKey="#{Mensaje.id}"
+		                                         rows="15"
+		                                         paginator="true"
+		                                         paginatorPosition="bottom"
+		                                         > <!-- rendered="#{bandeja.recibidos != null}" -->
+		                                <p:ajax event="rowSelect"  update="form:mostrar-mensaje"/>
+		                                
+		                          
+		                                
+		                                <p:column headerText="Fecha:" sortBy="#{Mensaje.fecha}">
+		                                    <h:outputText value="#{Mensaje.fecha}"/>
+		                                </p:column>
+		                                
+		                                <p:column headerText="Asunto:" sortBy="#{Mensaje.asunto}">
+		                                    <h:outputText value="#{Mensaje.asunto}"/>
+		                                </p:column>
+		                                
+		                                <p:column headerText="Texto:" sortBy="#{Mensaje.texto}">
+		                                    <h:outputText value="#{Mensaje.texto}"/>
+		                                </p:column>
+		                                
+		                                <p:column headerText="Enviado por:" sortBy="#{Mensaje.emisor.key.dni}">
+		                                    <h:outputText value="#{Mensaje.emisor.key.dni}"/>
+		                                </p:column>
+		                                
+		                            </p:dataTable>  
+		                            
+		                         
+		                            
+		                            
+                        </p:tab>
+                        
+                        <p:tab title="Enviado">
+
+                            <p:dataTable class="table1"
+                                        value="#{bandeja.getEnviados(controlAutorizacion.usuario.key.codigo)}" 
+		                                         var="Mensaje"
+		                                         selectionMode="single" 
+		                                         selection="#{bandeja.seleccionado}" 
+		                                         rowKey="#{Mensaje.id}"
+		                                         rows="15"
+		                                         paginator="true"
+		                                         paginatorPosition="bottom"
+                                          > <!-- rendered="#{bandeja.enviados != null}" -->
+                                     
+                                <p:ajax event="rowSelect"  update="form:mostrar-mensaje"/>
+                                
+                                 
+                                
+                                <p:column headerText="Fecha:" sortBy="#{Mensaje.fecha}">
+                                    <h:outputText value="#{Mensaje.fecha}"/>
+                                </p:column>
+                                
+                                <p:column headerText="Asunto:" sortBy="#{Mensaje.asunto}">
+                                    <h:outputText value="#{Mensaje.asunto}"/>
+                                </p:column>
+                                
+                                <p:column headerText="Texto:" sortBy="#{Mensaje.texto}">
+                                    <h:outputText value="#{Mensaje.texto}"/>
+                                </p:column>
+                                
+                                <p:column headerText="Enviado a:" sortBy="#{Mensaje.receptor.key.dni}">
+                                    <h:outputText value="#{Mensaje.receptor.key.dni}"/>
+                                </p:column>
+                              
+                            </p:dataTable>
+                            
+                            
+                            
+                            
+                            
+                        </p:tab>    
+                        
+                        <p:tab title="Enviar Mensaje">
+                        	<table style="width: 60%;align-content: center;align-self: center; margin-left: 15%; margin-top: 15px;">
+                        <tr>
+                            <td>
+                                <pre>
+                                    
+                                </pre>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <table style="width: 80%;align-self: center;">
+                                    <tr><td><h:message for="ASUNTO"/>ASUNTO:</td></tr>
+                                    <tr><td><h:inputText id="ASUNTO" style="background: white; border: 1px solid black; border-radius: 3px;" value="#{nuevom.asunto}" required="true" requiredMessage="(*)"/></td></tr>
+                                    <tr><td><h:message for="DESTINATARIO"/>DESTINATARIO (Introduzca el dni):</td></tr>
+                                    <tr><td><h:inputText id="ASUNTO1" style="background: white; border: 1px solid black; border-radius: 3px;" value="#{nuevom.destinatario}" required="true" requiredMessage="(*)"/></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table style="width: 80%;">
+                                    <tr><td><h:message for="TEXTO"/>TEXTO:</td></tr>
+                                    <tr><td><h:inputTextarea id="TEXTO" style="background: white; min-height: 100px; border: 1px solid black; border-radius: 3px;" value="#{nuevom.texto}" required="true" requiredMessage="(*)"/></td></tr>
+                                    <tr><td><h:commandButton class="textoinput2" value="Enviar mensaje" action="#{nuevom.enviarMensaje()}"/></td></tr>
+                                   
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                        </p:tab>
+                        
+                    </p:tabView>
+                    
+                    
+                    <p:outputPanel id="mostrar-mensaje" class="EnseñaMensaje">
+                        
+                        <p:outputPanel rendered="#{bandeja.seleccionado!=null}">
+                            <table class="mostrarmensaje" style="background-color: white;border: 1px solid black">
+                                <tr>
+                                    <td>
+                                        <h:outputText value='Enviado por : #{bandeja.seleccionado.emisor.key.dni} el '/>
+                                    </td>
+                                    
+                                  
+                                    
+                                    <td style="text-align: right">
+                                        <h:outputText value="#{bandeja.seleccionado.fecha}"/>  
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <h:outputText value="#{bandeja.seleccionado.asunto}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <h:outputText value="#{bandeja.seleccionado.texto}"/> 
+                                    </td>
+                                </tr>
+                            </table>
+                        </p:outputPanel>
+                        
+                        
+                        
+                        <p:outputPanel rendered="#{bandeja.seleccionado2!=null}">
+                            <table class="mostrarmensaje" style="background-color: white;border: 1px solid black">
+                                <tr>
+                                    <td>
+                                        <h:outputText value='Enviado a : #{bandeja.seleccionado2.dnidestinatario}'/>
+                                    </td>
+                                    <td style="text-align: right">
+                                        <h:outputText value="#{bandeja.seleccionado2.fecha}"/>  
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <h:outputText value="#{bandeja.seleccionado2.asunto}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <h:outputText value="#{bandeja.seleccionado2.texto}"/> 
+                                    </td>
+                                </tr>
+                            </table>
+                        </p:outputPanel>
+                        
+                        
+                    </p:outputPanel>
+  
+                </h:form>
+    </ui:define>
+</ui:composition>

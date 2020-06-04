@@ -1,0 +1,166 @@
+<ui:composition  align="center" template="/WEB-INF/templates/plantilla.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define  name="title">Panel Administracion</ui:define>
+    <ui:define  name="content">
+
+<p:growl id="msg" showDetail="true"/>
+
+<h:form>
+<p:dataTable class="table2"
+                                        value="#{admin.as}" 
+		                                         var="actividad"
+		                                         selectionMode="single" 
+		                                         selection="#{admin.actselec}" 
+		                                         rowKey="#{actividad.codigo}"
+		                                         rows="15"
+		                                         paginator="true"
+		                                         paginatorPosition="bottom"
+		                                         
+                                          		 rendered="#{admin.as != null}"  >   
+                                     
+                                
+                                
+                                 
+                                
+                                <p:column headerText="Nombre:" >
+                                    <h:outputText value="#{actividad.nombre}"/>
+                                </p:column>
+                                <p:column>
+                                <h:inputText value="#{admin.nombreintro}" />
+                                <p:commandButton value="Cambiar" id="p10" action="#{admin.updatenombreA(admin.actselec)}" update="msg" style="margin-right:20px;" ajax="false" />
+                                </p:column>
+                                
+                                <p:column headerText="Fecha:" >
+                                         <h:outputText value="#{actividad.fecha}"/>
+                                </p:column>
+                                <p:column>
+                                   <p:calendar value = "#{admin.fechaintro}"/>
+                                <p:commandButton value="Cambiar" id="p11" action="#{admin.updateFecha(admin.actselec)}" update="msg" style="margin-right:20px;" ajax="false" />
+                                </p:column>
+                                
+                                <p:column headerText="Localización:" >
+                                         <h:outputText value="#{actividad.localizacion}"/>
+                                </p:column>
+                                <p:column>
+                                   <h:inputText value = "#{admin.localizacionintro}"/>
+                                <p:commandButton value="Cambiar" id="p12" action="#{admin.updatelocA(admin.actselec)}" update="msg" style="margin-right:20px;" ajax="false" />
+                                </p:column>
+                                
+                                <p:column headerText="Descripción:" >
+                                         <h:outputText value="#{actividad.descripcion}"/>
+                                </p:column>
+                                <p:column>
+                                   <h:inputText value = "#{admin.descripcionintro}"/>
+                                <p:commandButton value="Cambiar" id="p13" action="#{admin.updatedesA(admin.actselec)}" update="msg" style="margin-right:20px;" ajax="false" />
+                                </p:column>
+                                
+                                  <p:column headerText="Duración :" >
+                                        - <h:outputText value="#{actividad.duracion}"/>
+                                </p:column>
+                                <p:column>
+                                   <h:inputText value = "#{admin.duracionintro}"/>
+                                <p:commandButton value="Cambiar" id="p14" action="#{admin.updatedurA(admin.actselec)}" update="msg" style="margin-right:20px;" ajax="false" />
+                                </p:column>
+                                
+                                
+                                
+                                 <p:column headerText="Plazas :" >
+                                         <h:outputText value="#{actividad.plazas}"/>
+                                </p:column>
+                                <p:column>
+                                   <h:inputText value = "#{admin.plazasintro}"/>
+                                <p:commandButton value="Cambiar" id="p15" action="#{admin.updateplazA(admin.actselec)}" update="msg" style="margin-right:20px;" ajax="false" />
+                                </p:column>
+                                
+                                 <p:column headerText="Disponibilidad :" >
+                                         <h:outputText value="#{actividad.disponibilidad}"/>
+                                </p:column>
+                                <p:column>
+                                <p:commandButton value="Cambiar" id="p16" action="#{admin.cambiarDisponibilidad(admin.actselec)}" update="msg" style="margin-right:20px;" ajax="false" />
+                                </p:column>
+                                
+                                
+                                
+                                
+                                
+                              
+                                
+                                
+
+                            </p:dataTable>
+                            
+                            <h:form>
+                            
+                            <p:dataTable class="table2"
+                                        value="#{admin.actselec.lista_servicio}" 
+		                                         var="servicio"
+		                                         selectionMode="single" 
+		                                         selection="#{admin.servicioselec}" 
+		                                         rowKey="#{servicio.codigo}"
+		                                         rows="15"
+		                                         paginator="true"
+		                                         paginatorPosition="bottom"
+                                           rendered="#{admin.actselec != null}">
+                                           
+                                               
+                                               
+                                     <p:column headerText="Descripción:" >
+                                         <h:outputText value="#{servicio.descripcion}"/>
+                                </p:column>
+                                <p:column>
+                                   <h:inputText value = "#{admin.desc2intro}"/>
+                                <p:commandButton value="Cambiar" id="p17" action="#{admin.updatedescS(admin.servicioselec)}" update="msg" style="margin-right:20px;" ajax="false" />
+                                </p:column>
+                                
+                                
+                                
+                                     <p:column headerText="Horas:" >
+                                         <h:outputText value="#{servicio.horas}"/>
+                                </p:column>
+                                <p:column>
+                                   <h:inputText value = "#{admin.horas}"/>
+                                <p:commandButton value="Cambiar" id="p18" action="#{admin.updatehorS(admin.servicioselec)}" update="msg" style="margin-right:20px;" ajax="false" />
+                                </p:column>
+                                
+                                
+                                
+                                     <p:column headerText="Num participantes:" >
+                                         <h:outputText value="#{servicio.numParticipantes}"/>
+                                </p:column>
+                                <p:column>
+                                   <h:inputText value = "#{admin.participantesintro}"/>
+                                <p:commandButton value="Cambiar" id="p19" action="#{admin.updatedesA(admin.servicioselec)}" update="msg" style="margin-right:20px;" ajax="false" />
+                                </p:column>
+                       
+                                
+                                        
+                                        
+							         
+							       		      
+                                         
+                                         
+                                         
+                                           
+                                           
+                           </p:dataTable>
+                                           
+                                           
+                                           
+                                           
+                                           
+                       </h:form>                    
+                                           
+                                           
+                                           
+
+   
+</h:form>
+
+        
+    </ui:define>
+</ui:composition>

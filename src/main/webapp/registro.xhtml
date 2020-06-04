@@ -1,0 +1,330 @@
+<ui:composition  align="center" template="/WEB-INF/templates/plantilla.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define  name="title">Registro</ui:define>
+    <ui:define  name="content">
+
+<p:growl id="msg" showDetail="true"/>
+
+<h:form class="textbox">
+<h1 class="t1">Registro</h1>
+<br/>
+ <p class="p11">¿Cómo quieres registrarte?</p>
+ 
+
+ <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="5">
+        <p:outputLabel for="console" value="Elige una y pulsa el botón de aceptar:" />
+<p:selectOneRadio id="console" value="#{Regusr.tipouser}" unselectable="true" style="align:center">
+	            <f:selectItem itemLabel="Usuario" itemValue="1" checked="true" select="true"/>
+	             <f:selectItem itemLabel="Docente" itemValue="2" />
+	              <f:selectItem itemLabel="Estudiante" itemValue="3" />
+	            <f:selectItem itemLabel="Personal de administracion" itemValue="4" />
+	            <f:selectItem itemLabel="Entidad" itemValue="5" />
+</p:selectOneRadio>
+ 
+    </h:panelGrid>
+	 <br/>
+	 <br/>
+	 <h:commandButton value="Aceptar" type="submit" class="Boton2" style="position:center"/>
+    </h:form> 
+    
+    
+    
+    
+   <h:form class="textbox2">
+   
+
+
+   <br/>
+    <br/>
+    <p class="p11">E-mail *</p>  
+    <h:panelGrid columns="2" style="margin-top:1%;margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+     <p:inputText value="#{Regusr.mail}" placeholder="Introduce tu e-mail" name="name" id="name"/>
+     <p:graphicImage value="images/email.png" height="40" width="40"  />
+     </h:panelGrid>
+
+   
+    
+    <br/>
+    <br/>
+    <p class="p11">DNI / NIF *</p>
+     <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+    <p:inputText value="#{Regusr.dni}" placeholder="Introduce aqui tu DNI"/>
+    <p:graphicImage value="images/id-card.png" height="40" width="40"  />
+    </h:panelGrid>
+    
+    <br/>
+    <br/>
+    <p class="p11">Contraseña *</p>
+     <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+    <p:password value="#{Regusr.contrasenia}" placeholder="Introduce aqui la contraseña"/>
+    <p:graphicImage value="images/lock.png" height="40" width="40"   />
+    </h:panelGrid>
+    
+    <br/>
+    <br/>
+    <p class="p11">Confirme la contraseña *</p>
+     <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+    <p:password value="#{Regusr.contrasenia2}" placeholder="Repita la contraseña"/>
+     <p:graphicImage value="images/lock.png" height="40" width="40"  />
+     </h:panelGrid>
+   
+    
+    <br/>
+    <br/>
+    <p class="p11">Nombre *</p>
+     <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+    <p:inputText value="#{Regusr.nombre}" placeholder="Introduzca su nombre"/>
+    <p:graphicImage value="images/social.png" height="40" width="40"  />
+    </h:panelGrid>
+    
+
+
+    <c:if test="#{Regusr.tipouser == 1}">
+    
+     <br/>
+     <br/>
+    <p class="p11">Apellido 1 *</p>
+     <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+    <p:inputText value="#{Regusr.apellido1}" placeholder="Introduzca su primer apellido"/>
+     <p:graphicImage value="images/social.png" height="40" width="40"  />
+     </h:panelGrid>
+    
+    <br/>
+    <br/>
+    <p class="p11">Apellido 2 *</p>
+    <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+    <p:inputText value="#{Regusr.apellido2}" placeholder="Introduzca su segundo apellido"/>
+     <p:graphicImage value="images/social.png" height="40" width="40"  />
+     </h:panelGrid>
+     
+    <br/>
+     <br/>    
+     <p class="p11">Fecha de nacimiento *</p>
+      <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+    <p:calendar id="xd" value="#{Regusr.fechanacim}"></p:calendar>
+    <p:graphicImage for="xd" value="images/calendar.png" height="40" width="40"  />
+    </h:panelGrid>
+          <br/>
+     <br/>
+   
+    
+    </c:if>
+    
+    
+ 
+    
+    
+     <c:if test="#{Regusr.tipouser == 2}">
+     
+     <br/>
+     <br/>
+    <p class="p11">Apellido 1 *</p>
+     <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+    <p:inputText value="#{Regusr.apellido1}" placeholder="Introduzca su primer apellido"/>
+     <p:graphicImage value="images/social.png" height="40" width="40"  />
+     </h:panelGrid>
+     
+    <br/>
+    <br/>
+   <p class="p11">Apellido 2 *</p>
+    <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+    <p:inputText value="#{Regusr.apellido2}" placeholder="Introduzca su segundo apellido"/>
+     <p:graphicImage value="images/social.png" height="40" width="40"  />
+     </h:panelGrid>
+     
+    <br/>
+     <br/>
+     <p class="p11">Fecha de nacimiento *</p>
+      <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+    <p:calendar id="xd" value="#{Regusr.fechanacim}"></p:calendar>
+    <p:graphicImage for="xd" value="images/calendar.png" height="40" width="40"  />
+    </h:panelGrid>
+    
+    <br/>
+     <br/>
+     <p class="p11">Introduzca el departamento al que pertenece *</p>
+     		 <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+           <p:inputText value="#{Regusr.departamento}" placeholder="Departamento"/>
+            <p:graphicImage value="images/building.png" height="40" width="40" />
+            </h:panelGrid>
+           <br/>
+     <br/>
+     </c:if>
+     
+     
+     <c:if test="#{Regusr.tipouser == 3}">
+    
+    <br/>
+     <br/>
+    <p class="p11">Apellido 1 *</p>
+    <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+    <p:inputText value="#{Regusr.apellido1}" placeholder="Introduzca su segundo apellido"/>
+     <p:graphicImage value="images/social.png" height="40" width="40"  />
+     </h:panelGrid>
+     
+    <br/>
+     <br/>
+    <p class="p11">Apellido 2 *</p>
+     <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+    <p:inputText value="#{Regusr.apellido2}" placeholder="Introduzca su primer apellido"/>
+     <p:graphicImage value="images/social.png" height="40" width="40"  />
+     </h:panelGrid>
+    
+    <br/>
+     <br/>
+      <p class="p11">Fecha de nacimiento *</p>
+      <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+    <p:calendar id="xd" value="#{Regusr.fechanacim}"></p:calendar>
+    <p:graphicImage for="xd" value="images/calendar.png" height="40" width="40"  />
+    </h:panelGrid>
+    
+    <br/>
+     <br/>
+     		<p class="p11">Introduzca el curso al que pertenece *</p>
+            <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+     <h:selectOneMenu value="#{Regusr.curso}">
+	 	<f:selectItem itemLabel="1º" itemValue="1"/>
+	    <f:selectItem itemLabel="2º" itemValue="2"/>
+	    <f:selectItem itemLabel="3º" itemValue="3"/>
+	    <f:selectItem itemLabel="4º" itemValue="4"/>
+	 </h:selectOneMenu>
+	  <p:graphicImage value="images/books.png" height="40" width="40" />
+	  </h:panelGrid>
+           
+           
+           
+       <br/>
+     <br/>        
+           <p class="p11">Indique la titulación en la que se encuentra matriculado *</p>
+            <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+           <p:inputText value="#{Regusr.titulacion}" placeholder="Titulacion"/>
+             <p:graphicImage value="images/graduated.png" height="40" width="40" />
+             </h:panelGrid>
+             
+           <br/>
+     <br/>
+     </c:if>
+     
+     <c:if test="#{Regusr.tipouser == 4}">
+     
+     <br/>
+     <br/>
+    <p class="p11">Apellido 1 *</p>
+     <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+    <p:inputText value="#{Regusr.apellido1}" placeholder="Introduzca su primer apellido"/>
+     <p:graphicImage value="images/social.png" height="40" width="40"  />
+     </h:panelGrid>
+     
+   <br/>
+     <br/>   
+    <p class="p11">Apellido 2 *</p>
+    <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+    <p:inputText value="#{Regusr.apellido2}" placeholder="Introduzca su segundo apellido"/>
+     <p:graphicImage value="images/social.png" height="40" width="40"  />
+     </h:panelGrid>
+     
+    <br/>
+     <br/>
+    <p class="p11">Fecha de nacimiento *</p>
+      <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+    <p:calendar id="xd" value="#{Regusr.fechanacim}"></p:calendar>
+    <p:graphicImage for="xd" value="images/calendar.png" height="40" width="40"  />
+    </h:panelGrid>
+    
+    <br/>
+     <br/>
+     		<p class="p11">Indique el tipo de cargo que ostenta *</p>
+     		 <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+           <p:inputText value="#{Regusr.tipo_cargo}" placeholder="Cargo"/>
+            <p:graphicImage value="images/cargo.png" height="40" width="40" /> 
+            </h:panelGrid>
+            <br/>
+     <br/>
+                    
+     </c:if>
+
+
+    
+     <c:if test="#{Regusr.tipouser == 5}">
+    <br/>
+     <br/>
+     		<p class="p11">Introduzca la dirección de la empresa *</p>
+     		 <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+           <p:inputText value="#{Regusr.direccion}" placeholder="Dirección"/> 
+            <p:graphicImage value="images/location.png" height="40" width="40" />
+            </h:panelGrid>
+           
+     <br/>
+     <br/>
+     <p class="p11">Introduzca el país en el que tiene sede la empresa *</p>
+      <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+           <p:inputText value="#{Regusr.pais}" placeholder="País"/>
+             <p:graphicImage value="images/location.png" height="40" width="40" />
+             </h:panelGrid>
+     		
+           
+     <br/>
+     <br/>
+     <p class="p11">Introduzca la ciudad en la que tiene sede *</p>
+      <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+           <p:inputText value="#{Regusr.ciudad}" placeholder="Ciudad"/> 
+            <p:graphicImage value="images/location.png" height="40" width="40" />
+            </h:panelGrid>
+     		
+           
+           
+           <br/>
+     <br/>
+     
+     <p class="p11">Introduzca el teléfono de la empresa *</p>
+      <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+           <p:inputText value="#{Regusr.tlf}" placeholder="Teléfono"/>
+            <p:graphicImage value="images/call.png" height="40" width="40" /> 
+            </h:panelGrid>
+     		
+           
+           <br/>
+     <br/>
+     		<p class="p11">Introduzca el tipo de entidad *</p>
+            <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+           <h:selectOneMenu value="#{Regusr.tipo_origen}">
+	 	<f:selectItem itemLabel="Con ánimo de lucro" itemValue="Con ánimo de lucro"/>
+	    <f:selectItem itemLabel="Sin ánimo de lucro" itemValue="Sin ánimo de lucro"/>
+	     </h:selectOneMenu>
+	     
+	      <p:graphicImage value="images/tipoe.png" height="40" width="40" />
+	      </h:panelGrid>
+
+           
+           <br/>
+     <br/>
+     		<p class="p11">Si su empresa dispone de página web, introdúzcala a continuación</p>
+     		 <h:panelGrid columns="2" style="margin-bottom:10px; position:relative;left:12%" cellpadding="20">
+           <p:inputText value="#{Regusr.web}" placeholder="Web"/>  
+            <p:graphicImage value="images/global.png" height="40" width="40" />
+            </h:panelGrid>
+            <br/>
+     <br/>
+                    
+     </c:if>
+     <br/>
+     <br/>
+     
+      <h:commandButton class="Boton2" value="Registrarse" action="#{Regusr.creaUsuario()}" update="msg"/>
+      
+      
+      </h:form>
+ 
+        
+
+
+
+   
+      
+    </ui:define>
+</ui:composition>

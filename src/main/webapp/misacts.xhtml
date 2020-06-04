@@ -1,0 +1,83 @@
+<ui:composition  align="center" template="/WEB-INF/templates/plantilla.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:fn ="http://java.sun.com/jsp/jstl/functions">
+                
+    <ui:define  name="title">Mis Actividades</ui:define>
+    <ui:define  name="content">
+    
+
+    <h:form id="form">
+       
+		<p:carousel value="#{controlAutorizacion.getUsuario().participa_en}" headerText="Actividades de #{controlAutorizacion.usuario.nombre}" var="actividad" itemStyle="text-align:center; display:flex" responsive="true">
+			    
+			        <p:panelGrid columns="1" style="width:100%;margin:10px 0px;height:33%" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">                      <br/>
+						    <h:outputText value="Nombre: #{actividad.nombre}" />
+						    
+						    <h:outputText value="Descripción: #{actividad.descripcion}" />
+			
+				 
+				            <h:outputText value="Fecha: #{actividad.fecha}" />
+				         
+				 
+				            <h:outputText value="Localización: #{actividad.localizacion}" />
+				           
+				            
+				            <h:outputText value="Duración: #{actividad.duracion}" />
+				 
+				 
+				            <h:outputText value="Número plazas: #{actividad.plazas}" />
+				            <br/>
+				            
+				            <h:commandButton  class="Boton3" align="center" value="Ver servicios en los que participo" action="#{misacts.setActselec(actividad)}" update="form"/>
+
+			            
+			            </p:panelGrid>
+                    
+		</p:carousel>
+              
+                    <c:if test="#{misacts.getActselec() != null}">
+
+						<p:dataScroller value="#{controlAutorizacion.usuario.participa_serv.get(controlAutorizacion.usuario.participa_en.indexOf(misacts.actselec))}" var="servicio">
+						
+						<f:facet name="header" style="align-text:left">
+            					Servicio de la actividad seleccionada en los que participas
+       					</f:facet>
+						
+					  
+						        <h:panelGrid columns="1" style="width:300px">
+						        					
+						            <p:outputPanel>
+						            
+							            <h:panelGrid columns="3" cellpadding="5" class="servitem">
+							            
+							            	<h:outputText value="Descripción: #{servicio.getDescripcion()}" />
+											           
+											<h:outputText value="Horas: #{servicio.getHoras()}" />
+											         
+											<h:outputText value="Número Participantes: #{servicio.getNumParticipantes()}" />
+											
+											<br/>
+											<br/>
+													            
+							            </h:panelGrid>
+						           
+						            </p:outputPanel>
+						            
+						          </h:panelGrid>
+						          
+					  
+						 
+						          
+						</p:dataScroller>      
+                    
+                    </c:if>
+
+    </h:form>
+        
+    </ui:define>
+</ui:composition>     

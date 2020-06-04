@@ -1,0 +1,658 @@
+
+<ui:composition  align="center" template="/WEB-INF/templates/plantilla.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                 xmlns:p="http://primefaces.org/ui"
+                 xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define  name="title">Mi cuenta</ui:define>
+    <ui:define  name="content">
+    
+
+
+
+<body>
+
+
+ <p:growl id="msg" showDetail="true"/>
+ 
+<div class="izq">
+	<h3 id ="h4" class="Con">Mi perfil</h3>
+	<br/>
+	<p:graphicImage value="images/perfil.jpg" height="100" width="150" />
+</div>
+
+<div class="general"> 
+		
+		    <div class="der">
+		    <p:tabView>
+		    
+		     <p:tab  title="Sus datos personales">
+		     <div class="info">
+				            <h3>INFORMACIÓN</h3> 
+				              <div class="info_data">
+						                <div class="data">
+						                
+						                <h:form>
+						               	
+						               	<c:if test="#{controlAutorizacion.usuario.tipouser == 6}">
+						               	 <h:panelGrid columns="4" cellpadding="5" >
+						              				 <h:outputText value="Rango: " class="smtit"/>
+												  
+												     <h:outputText value="#{controlAutorizacion.usuario.rango}" class="dat"/>
+											    </h:panelGrid>
+												     <br/>
+												     <br/>
+												     
+						               	</c:if>
+						               
+						               	<c:if test="#{controlAutorizacion.usuario.tipouser != 5}">
+						               	 <h:panelGrid columns="2" cellpadding="5">
+	
+												     <h:outputText value="DNI: " class="smtit"/>
+												  
+												     <h:outputText value="#{controlAutorizacion.usuario.key.dni}" class="dat"/>
+												  </h:panelGrid>
+												     <br/>
+												     <br/>
+      
+      
+											     </c:if>
+											     
+										<c:if test="#{controlAutorizacion.usuario.tipouser == 5 }" class="dat">
+											     
+											 <h:panelGrid columns="2" cellpadding="5" >  
+												     <h:outputText value="NIF: " class="smtit"/>		
+												   	     
+												     <h:outputText value=" #{controlAutorizacion.usuario.key.dni}" class="dat"/>
+													 </h:panelGrid>
+											       	 <br/>
+												     <br/>
+											      
+											     </c:if>
+											     
+											     
+											
+											 <h:panelGrid columns="2" cellpadding="5"   style="text-align: center">
+												     <h:outputText value="Email: " class="smtit"/>
+												     
+												     <h:outputText value=" #{controlAutorizacion.usuario.mail}" class="dat"/>
+										</h:panelGrid>
+												     <br/>
+												     <br/>
+												
+											<h:panelGrid columns="4" cellpadding="5"   style="text-align: center">
+												     <h:outputText value="Nombre: " class="smtit" />
+												    											     
+												     <h:outputText value=" #{controlAutorizacion.usuario.getNombre()}" class="dat"/>
+											</h:panelGrid>
+													 <br/>
+												     <br/>
+											    
+											    
+											    
+											    
+											     <c:if test="#{controlAutorizacion.usuario.tipouser == 1 || controlAutorizacion.usuario.tipouser == 6}" class="dat">
+											     
+											   <h:panelGrid columns="2" cellpadding="5" > 
+												     <h:outputText value="Primer apellido: " class="smtit"/>								     
+												     <h:outputText value="#{controlAutorizacion.usuario.apellido1}" class="dat"/>
+												    </h:panelGrid>
+												      <br/>
+												     <br/>
+												     
+												   <h:panelGrid columns="2" cellpadding="5" > 
+													<h:outputText value="Segundo apellido: " class="smtit"/>								    
+												     <h:outputText value="#{controlAutorizacion.usuario.apellido2}" class="dat" />
+												      </h:panelGrid>
+												      <br/>
+												     <br/>
+												    
+												  <h:panelGrid columns="2" cellpadding="5" > 
+												      <h:outputText value="Fecha de nacimiento: " class="smtit"/>														    								      
+												     <h:outputText value="#{controlAutorizacion.usuario.getFechanacimiento()}" class="dat"/>
+												 </h:panelGrid>
+											     <br/>
+												     <br/>
+											      
+											      </c:if>
+											      
+											      <c:if test="#{controlAutorizacion.usuario.tipouser == 2}">
+											      
+											    <h:panelGrid columns="2" cellpadding="5" > 
+												        <h:outputText value="Primer apellido: " class="smtit"/>						     
+												     <h:outputText value="#{controlAutorizacion.usuario.apellido1}" class="dat"/>
+												    </h:panelGrid>
+												      <br/>
+												     <br/>
+												     
+												   <h:panelGrid columns="2" cellpadding="5" > 
+													    <h:outputText value="Segundo apellido: " class="smtit"/>								    
+												     <h:outputText value="#{controlAutorizacion.usuario.apellido2}" class="dat" />
+												   </h:panelGrid>
+												      <br/>
+												     <br/>
+												     
+												   <h:panelGrid columns="2" cellpadding="5" > 
+												        <h:outputText value="Departamento: " class="smtit"/>											        
+												   		<h:outputText value="#{controlAutorizacion.usuario.getDepartamento()}" class="dat"/>
+												    </h:panelGrid>
+												     <br/>
+												     <br/>
+										
+												   <h:panelGrid columns="2" cellpadding="5" > 
+												     	<h:outputText value="Fecha de nacimiento: " class="smtit"/> 	
+												   		<h:outputText value="#{controlAutorizacion.usuario.getFechanacimiento()}" class="dat"/>
+												  </h:panelGrid>
+											       <br/>
+												     <br/>
+												     
+												
+												     
+												     
+											       </c:if>
+											       
+											       <c:if test="#{controlAutorizacion.usuario.tipouser == 3}">
+												     <h:panelGrid columns="2" cellpadding="5" > 
+												        <h:outputText value="Primer apellido: " class="smtit" />											        
+												    	<h:outputText value="#{controlAutorizacion.usuario.apellido1}" class="dat"/>
+												 </h:panelGrid>
+												 <br/>
+												     <br/>
+												     
+												   <h:panelGrid columns="2" cellpadding="5" > 
+													    <h:outputText value="Segundo apellido: " class="smtit"/>
+
+													    <h:outputText value="#{controlAutorizacion.usuario.apellido2}" class="dat"/>
+													    </h:panelGrid>
+													     <br/>
+												     <br/>
+												     
+													 <h:panelGrid columns="2" cellpadding="5" >     
+													    <h:outputText value="Curso: " class="smtit"/>
+													    
+													    <h:outputText value="#{controlAutorizacion.usuario.getCurso()}" class="dat"/>
+													    </h:panelGrid>
+													     <br/>
+												     <br/>
+												     
+												   <h:panelGrid columns="2" cellpadding="5" > 
+													    <h:outputText value="Titulacion: " class="smtit"/>
+													    
+													    <h:outputText value="#{controlAutorizacion.usuario.getTitulacion()}" class="dat"/>
+													  </h:panelGrid>
+													     <br/>
+												     <br/>
+												     
+													 <h:panelGrid columns="2" cellpadding="5" > 
+													    <h:outputText value="Fecha de nacimiento: " class="smtit"/>
+													    
+													    <h:outputText value="#{controlAutorizacion.usuario.getFechanacimiento()}" class="dat"/>
+												      </h:panelGrid>
+												       <br/>
+												     <br/>
+												     
+											       </c:if>
+											       
+											       
+											      <c:if test="#{controlAutorizacion.usuario.tipouser == 4}">
+												    <h:panelGrid columns="2" cellpadding="5" > 
+													    <h:outputText value="Primer apellido: " class="smtit"/>
+													    
+													    <h:outputText value="#{controlAutorizacion.usuario.apellido1}" class="dat"/>
+													 </h:panelGrid>
+													 <br/>
+												     <br/>
+												     
+												   <h:panelGrid columns="2" cellpadding="5" > 
+													    <h:outputText value="Segundo apellido: " class="smtit"/>
+													    
+													    <h:outputText value="#{controlAutorizacion.usuario.apellido2}" class="dat"/>
+												    </h:panelGrid>
+												     <br/>
+												     <br/>
+												     
+												   <h:panelGrid columns="2" cellpadding="5" > 
+												        <h:outputText value="Tipo de cargo: " class="smtit"/>
+												        
+												    	<h:outputText value="#{controlAutorizacion.usuario.getTipoo()}" class="dat"/>
+												    </h:panelGrid>
+												     
+												     <br/>
+												     <br/>
+
+												     	<h:panelGrid columns="2" cellpadding="5"> 
+														<h:outputText value="Fecha de nacimiento: " class="smtit"/>
+												     	
+												   		<h:outputText value="#{controlAutorizacion.usuario.getFechanacimiento()}" class="dat"/>
+												  </h:panelGrid>
+											       <br/>
+												     <br/>
+												     
+												    
+												     
+											      </c:if>
+											       
+											       
+											         <c:if test="#{controlAutorizacion.usuario.tipouser == 5}">
+											    <h:panelGrid columns="2" cellpadding="5" > 
+													    <h:outputText value="Dirección: " class="smtit"/>
+													    
+													    <h:outputText value="#{controlAutorizacion.usuario.getDireccion()}" class="dat"/>
+													   </h:panelGrid>
+													     <br/>
+												     <br/>
+												     
+													    
+													<h:panelGrid columns="2" cellpadding="5"> 
+													    <h:outputText value="Teléfono de contacto: " class="smtit"/>
+													    
+													    <h:outputText value="#{controlAutorizacion.usuario.getTelefono()}" class="dat"/>
+													   </h:panelGrid>
+													     <br/>
+												     <br/>
+												     
+													    
+													  <h:panelGrid columns="2" cellpadding="5" > 
+													    <h:outputText value="País: " class="smtit"/>
+													 
+													    <h:outputText value="#{controlAutorizacion.usuario.getPais()}" class="dat"/>
+													    </h:panelGrid>
+													     <br/>
+												     <br/>
+												     
+													    
+													  <h:panelGrid columns="2" cellpadding="5" > 
+													    <h:outputText value="Ciudad: " class="smtit"/>
+											
+													    <h:outputText value="#{controlAutorizacion.usuario.getCiudad()}" class="dat"/>
+													    </h:panelGrid>
+													     <br/>
+												     <br/>
+												     
+													    
+													  <h:panelGrid columns="2" cellpadding="5" > 
+													    <h:outputText value="Tipo de entidad: " class="smtit"/>
+													   
+													    <h:outputText value="#{controlAutorizacion.usuario.getTipo_origen()}" class="dat"/>
+													     </h:panelGrid>
+													     <br/>
+												     <br/>
+												     
+													    
+													  <h:panelGrid columns="2" cellpadding="5" > 
+													    <h:outputText value="Página Web: " class="smtit"/>
+													    
+													    <h:outputText value="#{controlAutorizacion.usuario.getPagina_web()}" class="dat"/>
+													      </h:panelGrid>
+													     <br/>
+												     <br/>
+											      
+											      
+												</c:if>
+									
+						               			</h:form>
+						               			
+								        </div>
+						                
+						                
+						                
+				              </div>
+				              
+				              </div>
+				              
+                        
+                        
+                        
+                        
+                        
+                        
+             </p:tab>
+                        <p:tab title="Editar perfil">
+                        <div class="info">
+				            <h3>INFORMACIÓN</h3> 
+				              <div class="info_data">
+						                <div class="data">
+						                
+						                <h:form>
+						               	
+						               	<c:if test="#{controlAutorizacion.usuario.tipouser == 6}">
+						               	 <h:panelGrid columns="4" cellpadding="5" >
+						              		 <h:outputText value="Rango: " class="smtit"/>
+												  
+												     <h:outputText value="#{controlAutorizacion.usuario.rango}" class="dat"/>
+												     <h:inputText value = "#{controlAutorizacion.usuario.rango}"/>
+												   
+												     <p:commandButton value="Cambiar Rango" action="#{controlAutorizacion.usuario.setRango(controlAutorizacion.usuario.getRango ())}" style="margin-right:20px;" ajax="false" />
+												    </h:panelGrid>
+												     <br/>
+												     <br/>
+												     
+						               	</c:if>
+						               
+						               	<c:if test="#{controlAutorizacion.usuario.tipouser != 5}">
+						               	 <h:panelGrid columns="4" cellpadding="5">
+	
+												     <h:outputText value="DNI: " class="smtit"/>
+												  
+												     <h:outputText value="#{controlAutorizacion.usuario.key.dni}" class="dat"/>
+												     <h:inputText value = "#{controlAutorizacion.usuario.key.dni}"/>
+												   
+												     <p:commandButton value="Cambiar DNI" action="#{controlAutorizacion.usuario.key.setDni(controlAutorizacion.usuario.key.dni)}" style="margin-right:20px;" ajax="false" />
+												    </h:panelGrid>
+												     <br/>
+												     <br/>
+      
+      
+											     </c:if>
+											     
+										<c:if test="#{controlAutorizacion.usuario.tipouser == 5 }" class="dat">
+											     
+											 <h:panelGrid columns="4" cellpadding="5" >  
+												     <h:outputText value="NIF: " class="smtit"/>		
+												   	     
+												     <h:outputText value=" #{controlAutorizacion.usuario.key.dni}" class="dat"/>
+												     <h:inputText value = "#{controlAutorizacion.usuario.key.dni}"/>
+												     <p:commandButton value="Cambiar NIF" action="#{controlAutorizacion.usuario.key.setDni(controlAutorizacion.usuario.key.dni)}" style="margin-right:20px;" ajax="false" />
+											       	 
+											       	 </h:panelGrid>
+											       	 <br/>
+												     <br/>
+											      
+											     </c:if>
+											     
+											     
+											
+											 <h:panelGrid columns="4" cellpadding="5"   style="text-align: center">
+												     <h:outputText value="Email: " class="smtit"/>
+												     
+												     <h:outputText value=" #{controlAutorizacion.usuario.mail}" class="dat"/>
+												     <h:inputText value = "#{controlAutorizacion.usuario.mail }"/>
+												     <p:commandButton value="Cambiar Mail" action="#{controlAutorizacion.usuario.setMail(controlAutorizacion.usuario.mail )}" style="margin-right:20px;" ajax="false" />
+											</h:panelGrid>
+												     <br/>
+												     <br/>
+												
+											<h:panelGrid columns="4" cellpadding="5"   style="text-align: center">
+												     <h:outputText value="Nombre: " class="smtit" />
+												    											     
+												     <h:outputText value=" #{controlAutorizacion.usuario.getNombre()}" class="dat"/>
+												     <h:inputText value = "#{controlAutorizacion.usuario.nombre }"/>
+												     <p:commandButton value="Cambiar Nombre" action="#{controlAutorizacion.usuario.setNombre(controlAutorizacion.usuario.nombre)}" style="margin-right:20px;" ajax="false" />
+											</h:panelGrid>
+													 <br/>
+												     <br/>
+											    
+											    
+											    
+											    
+											     <c:if test="#{controlAutorizacion.usuario.tipouser == 1 || controlAutorizacion.usuario.tipouser == 6}" class="dat">
+											     
+											   <h:panelGrid columns="4" cellpadding="5" > 
+												     <h:outputText value="Primer apellido: " class="smtit"/>								     
+												     <h:outputText value="#{controlAutorizacion.usuario.apellido1}" class="dat"/>
+												     <h:inputText value = "#{controlAutorizacion.usuario.apellido1 }"/>
+												     <p:commandButton value="Cambiar Apellido1" action="#{controlAutorizacion.usuario.setApellido1(controlAutorizacion.usuario.apellido1 )}" style="margin-right:20px;" ajax="false" />
+												      </h:panelGrid>
+												      <br/>
+												     <br/>
+												     
+												   <h:panelGrid columns="4" cellpadding="5" > 
+													<h:outputText value="Segundo apellido: " class="smtit"/>								    
+												     <h:outputText value="#{controlAutorizacion.usuario.apellido2}" class="dat" />
+												     <h:inputText value = "#{controlAutorizacion.usuario.apellido2 }"/>
+												     <p:commandButton value="Cambiar Apellido2" action="#{controlAutorizacion.usuario.setApellido2(controlAutorizacion.usuario.apellido2 )}" style="margin-right:20px;" ajax="false" />
+												      </h:panelGrid>
+												      <br/>
+												     <br/>
+												    
+												  <h:panelGrid columns="4" cellpadding="5" > 
+												      <h:outputText value="Fecha de nacimiento: " class="smtit"/>														    								      
+												     <h:outputText value="#{controlAutorizacion.usuario.getFechanacimiento()}" class="dat"/>
+												     <p:calendar value = "#{controlAutorizacion.usuario.fechanacimiento }"/>
+												     <p:commandButton value="Cambiar Fecha Nacimiento" action="#{controlAutorizacion.usuario.setFechanacimiento(controlAutorizacion.usuario.getFechanacimiento())}" style="margin-right:20px;" ajax="false" />
+											     </h:panelGrid>
+											     <br/>
+												     <br/>
+											      
+											      </c:if>
+											      
+											      <c:if test="#{controlAutorizacion.usuario.tipouser == 2}">
+											      
+											    <h:panelGrid columns="4" cellpadding="5" > 
+												        <h:outputText value="Primer apellido: " class="smtit"/>						     
+												     <h:outputText value="#{controlAutorizacion.usuario.apellido1}" class="dat"/>
+												     <h:inputText value = "#{controlAutorizacion.usuario.apellido1 }"/>
+												     <p:commandButton value="Cambiar Apellido1" action="#{controlAutorizacion.usuario.setApellido1(controlAutorizacion.usuario.apellido1 )}" style="margin-right:20px;" ajax="false" />
+												      </h:panelGrid>
+												      <br/>
+												     <br/>
+												     
+												   <h:panelGrid columns="4" cellpadding="5" > 
+													    <h:outputText value="Segundo apellido: " class="smtit"/>								    
+												     <h:outputText value="#{controlAutorizacion.usuario.apellido2}" class="dat" />
+												     <h:inputText value = "#{controlAutorizacion.usuario.apellido2 }"/>
+												     <p:commandButton value="Cambiar Apellido2" action="#{controlAutorizacion.usuario.setApellido2(controlAutorizacion.usuario.apellido2 )}" style="margin-right:20px;" ajax="false" />
+												     </h:panelGrid>
+												      <br/>
+												     <br/>
+												     
+												   <h:panelGrid columns="4" cellpadding="5" > 
+												        <h:outputText value="Departamento: " class="smtit"/>											        
+												   		<h:outputText value="#{controlAutorizacion.usuario.getDepartamento()}" class="dat"/>
+												   		<h:inputText value = "#{controlAutorizacion.usuario.departamento }"/>
+												     <p:commandButton value="Cambiar Departamento" action="#{controlAutorizacion.usuario.setDepartamento(controlAutorizacion.usuario.getDepartamento())}" style="margin-right:20px;" ajax="false" />
+												     </h:panelGrid>
+												     <br/>
+												     <br/>
+										
+												   <h:panelGrid columns="4" cellpadding="5" > 
+												     	<h:outputText value="Fecha de nacimiento: " class="smtit"/> 	
+												   		<h:outputText value="#{controlAutorizacion.usuario.getFechanacimiento()}" class="dat"/>
+												     <p:calendar value = "#{controlAutorizacion.usuario.fechanacimiento }"/>
+												     <p:commandButton value="Cambiar Fecha Nacimiento" action="#{controlAutorizacion.usuario.setFechanacimiento(controlAutorizacion.usuario.getFechanacimiento())}" style="margin-right:20px;" ajax="false" />
+											      </h:panelGrid>
+											       <br/>
+												     <br/>
+												     
+												
+												     
+												     
+											       </c:if>
+											       
+											       <c:if test="#{controlAutorizacion.usuario.tipouser == 3}">
+												     <h:panelGrid columns="4" cellpadding="5" > 
+												        <h:outputText value="Primer apellido: " class="smtit" />											        
+												    	<h:outputText value="#{controlAutorizacion.usuario.apellido1}" class="dat"/>
+												    	<h:inputText value = "#{controlAutorizacion.usuario.apellido1 }"/>
+												     <p:commandButton value="Cambiar Apellido1" action="#{controlAutorizacion.usuario.setApellido1(controlAutorizacion.usuario.apellido1)}" style="margin-right:20px;" ajax="false" />
+												 </h:panelGrid>
+												 <br/>
+												     <br/>
+												     
+												   <h:panelGrid columns="4" cellpadding="5" > 
+													    <h:outputText value="Segundo apellido: " class="smtit"/>
+
+													    <h:outputText value="#{controlAutorizacion.usuario.apellido2}" class="dat"/>
+													    <h:inputText value = "#{controlAutorizacion.usuario.apellido2 }"/>
+												     <p:commandButton value="Cambiar Apellido2" action="#{controlAutorizacion.usuario.setApellido2(controlAutorizacion.usuario.apellido2)}" style="margin-right:20px;" ajax="false" />
+													    </h:panelGrid>
+													     <br/>
+												     <br/>
+												     
+													 <h:panelGrid columns="4" cellpadding="5" >     
+													    <h:outputText value="Curso: " class="smtit"/>
+													    
+													    <h:outputText value="#{controlAutorizacion.usuario.getCurso()}" class="dat"/>
+													    <h:inputText value = "#{controlAutorizacion.usuario.curso }"/>
+												     	<p:commandButton value="Cambiar Curso" action="#{controlAutorizacion.usuario.setCurso(controlAutorizacion.usuario.getCurso())}" style="margin-right:20px;" ajax="false" />
+													    </h:panelGrid>
+													     <br/>
+												     <br/>
+												     
+												   <h:panelGrid columns="4" cellpadding="5" > 
+													    <h:outputText value="Titulacion: " class="smtit"/>
+													    
+													    <h:outputText value="#{controlAutorizacion.usuario.getTitulacion()}" class="dat"/>
+													    <h:inputText value = "#{controlAutorizacion.usuario.titulacion }"/>
+												     	<p:commandButton value="Cambiar Titulacion" action="#{controlAutorizacion.usuario.setTitulacion(controlAutorizacion.usuario.getTitulacion())}" style="margin-right:20px;" ajax="false" />
+													  </h:panelGrid>
+													     <br/>
+												     <br/>
+												     
+													 <h:panelGrid columns="4" cellpadding="5" > 
+													    <h:outputText value="Fecha de nacimiento: " class="smtit"/>
+													    
+													    <h:outputText value="#{controlAutorizacion.usuario.getFechanacimiento()}" class="dat"/>
+													    <p:calendar value = "#{controlAutorizacion.usuario.fechanacimiento }"/>
+												     <p:commandButton value="Cambiar Fecha Nacimiento" action="#{controlAutorizacion.usuario.setFechanacimiento(controlAutorizacion.usuario.getFechanacimiento()))}" style="margin-right:20px;" ajax="false" />
+												       </h:panelGrid>
+												       <br/>
+												     <br/>
+												     
+											       </c:if>
+											       
+											       
+											      <c:if test="#{controlAutorizacion.usuario.tipouser == 4}">
+												    <h:panelGrid columns="4" cellpadding="5" > 
+													    <h:outputText value="Primer apellido: " class="smtit"/>
+													    
+													    <h:outputText value="#{controlAutorizacion.usuario.apellido1}" class="dat"/>
+													    <h:inputText value = "#{controlAutorizacion.usuario.apellido1 }"/>
+												     <p:commandButton value="Cambiar Apellido1" action="#{controlAutorizacion.usuario.setApellido1(controlAutorizacion.usuario.apellido1)}" style="margin-right:20px;" ajax="false" />
+													 </h:panelGrid>
+													 <br/>
+												     <br/>
+												     
+												   <h:panelGrid columns="4" cellpadding="5" > 
+													    <h:outputText value="Segundo apellido: " class="smtit"/>
+													    
+													    <h:outputText value="#{controlAutorizacion.usuario.apellido2}" class="dat"/>
+													    <h:inputText value = "#{controlAutorizacion.usuario.apellido2 }"/>
+												     <p:commandButton value="Cambiar Apellido2" action="#{controlAutorizacion.usuario.setApellido2(controlAutorizacion.usuario.apellido2)}" style="margin-right:20px;" ajax="false" />
+												     </h:panelGrid>
+												     <br/>
+												     <br/>
+												     
+												   <h:panelGrid columns="4" cellpadding="5" > 
+												        <h:outputText value="Tipo de cargo: " class="smtit"/>
+												        
+												    	<h:outputText value="#{controlAutorizacion.usuario.getTipoo()}" class="dat"/>
+												    	<h:inputText value = "#{controlAutorizacion.usuario.tipoo }"/>
+												     </h:panelGrid>
+												     <p:commandButton value="Cambiar Tipo" action="#{controlAutorizacion.usuario.setTipoo(controlAutorizacion.usuario.getTipoo())}" style="margin-right:20px;" ajax="false" />
+												     <br/>
+												     <br/>
+
+												     	<h:panelGrid columns="4" cellpadding="5"> 
+														<h:outputText value="Fecha de nacimiento: " class="smtit"/>
+												     	
+												   		<h:outputText value="#{controlAutorizacion.usuario.getFechanacimiento()}" class="dat"/>
+												     <p:calendar value = "#{controlAutorizacion.usuario.fechanacimiento }"/>
+												     <p:commandButton value="Cambiar Fecha Nacimiento" action="#{controlAutorizacion.usuario.setFechanacimiento(controlAutorizacion.usuario.getFechanacimiento())}" style="margin-right:20px;" ajax="false" />
+											       </h:panelGrid>
+											       <br/>
+												     <br/>
+												     
+												    
+												     
+											      </c:if>
+											       
+											       
+											         <c:if test="#{controlAutorizacion.usuario.tipouser == 5}">
+											    <h:panelGrid columns="4" cellpadding="5" > 
+													    <h:outputText value="Dirección: " class="smtit"/>
+													    
+													    <h:outputText value="#{controlAutorizacion.usuario.getDireccion()}" class="dat"/>
+													    <h:inputText value = "#{controlAutorizacion.usuario.direccion }"/>
+												     	<p:commandButton value="Cambiar Dirección" action="#{controlAutorizacion.usuario.setDireccion(controlAutorizacion.usuario.getDireccion())}" style="margin-right:20px;" ajax="false" />
+													    </h:panelGrid>
+													     <br/>
+												     <br/>
+												     
+													    
+													<h:panelGrid columns="4" cellpadding="5"> 
+													    <h:outputText value="Teléfono de contacto: " class="smtit"/>
+													    
+													    <h:outputText value="#{controlAutorizacion.usuario.getTelefono()}" class="dat"/>
+													    <h:inputText value = "#{controlAutorizacion.usuario.telefono }"/>
+												     	<p:commandButton value="Cambiar Teléfono" action="#{controlAutorizacion.usuario.setApellido2(controlAutorizacion.usuario.getTelefono())}" style="margin-right:20px;" ajax="false" />
+													   </h:panelGrid>
+													     <br/>
+												     <br/>
+												     
+													    
+													  <h:panelGrid columns="4" cellpadding="5" > 
+													    <h:outputText value="País: " class="smtit"/>
+													 
+													    <h:outputText value="#{controlAutorizacion.usuario.getPais()}" class="dat"/>
+													    <h:inputText value = "#{controlAutorizacion.usuario.pais }"/>
+												     <p:commandButton value="Cambiar Pais" action="#{controlAutorizacion.usuario.setPais(controlAutorizacion.usuario.getPais())}" style="margin-right:20px;" ajax="false" />
+													    </h:panelGrid>
+													     <br/>
+												     <br/>
+												     
+													    
+													  <h:panelGrid columns="4" cellpadding="5" > 
+													    <h:outputText value="Ciudad: " class="smtit"/>
+											
+													    <h:outputText value="#{controlAutorizacion.usuario.getCiudad()}" class="dat"/>
+													    <h:inputText value = "#{controlAutorizacion.usuario.ciudad }"/>
+												     <p:commandButton value="Cambiar Ciudad" action="#{controlAutorizacion.usuario.setCiudad(controlAutorizacion.usuario.getCiudad())}" style="margin-right:20px;" ajax="false" />
+													    </h:panelGrid>
+													     <br/>
+												     <br/>
+												     
+													    
+													  <h:panelGrid columns="4" cellpadding="5" > 
+													    <h:outputText value="Tipo de entidad: " class="smtit"/>
+													   
+													    <h:outputText value="#{controlAutorizacion.usuario.getTipo_origen()}" class="dat"/>
+													    <h:inputText value = "#{controlAutorizacion.usuario.tipo_origen}"/>
+												     	<p:commandButton value="Cambiar Tipo" action="#{controlAutorizacion.usuario.setTipo_origen(controlAutorizacion.usuario.getTipo_origen())}" style="margin-right:20px;" ajax="false" />
+													     </h:panelGrid>
+													     <br/>
+												     <br/>
+												     
+													    
+													  <h:panelGrid columns="4" cellpadding="5" > 
+													    <h:outputText value="Página Web: " class="smtit"/>
+													    
+													    <h:outputText value="#{controlAutorizacion.usuario.getPagina_web()}" class="dat"/>
+													    <h:inputText value = "#{controlAutorizacion.usuario.pagina_web}"/>
+												     <p:commandButton value="Cambiar Página Web" action="#{controlAutorizacion.usuario.setPagina_web(controlAutorizacion.usuario.getPagina_web())}" style="margin-right:20px;" ajax="false" />
+													     </h:panelGrid>
+													      
+													     <br/>
+												     <br/>
+											      
+											      
+												</c:if>
+												<!--  <h:outputText value=" #{controlAutorizacion.up()}" class="dat"/> -->
+									
+						               			</h:form>
+						               			
+								        </div>
+						                
+						                
+						                
+				              </div>
+				        </div>
+                        
+                        
+                        </p:tab>
+                        
+                    
+            </p:tabView>
+				        
+		    </div>
+</div> 
+
+</body>
+
+ 
+        
+        
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,55 @@
+<ui:composition  align="center" template="/WEB-INF/templates/plantilla.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define  name="title">Registro</ui:define>
+    <ui:define  name="content">
+      
+    <h:form>
+    
+    <br/>
+    <br/>
+    <p>e-mail</p>
+    <h:inputText value="#{Regusr.mail}"/>
+    
+    <br/>
+    <br/>
+    <p>DNI</p>
+    <h:inputText value="#{Regusr.dni}"/>
+    
+    <br/>
+    <br/>
+    <p>Contraseña</p>
+    <h:inputText value="#{Regusr.contrasenia}"/>
+    
+    <br/>
+    <br/>
+    <p>Confirme la contraseña</p>
+    <h:inputText value="#{Regusr.contrasenia2}"/>
+    
+    <br/>
+    <br/>
+    <p>Nombre</p>
+    <h:inputText value="#{Regusr.nombre}"/>
+    
+    <br/>
+    <br/>
+    <p>Apellido 1</p>
+    <h:inputText value="#{Regusr.apellido1}"/>
+    
+    <br/>
+    <br/>
+    <p>Apellido 2</p>
+    <h:inputText value="#{Regusr.apellido2}"/>
+    
+    <br/>
+    <br/>
+    <p>Fecha de nacimiento</p>
+    <br/>
+    
+     
+    </h:form>     
+    </ui:define>
+</ui:composition>
